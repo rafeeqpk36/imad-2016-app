@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
 });
 app.get('/ui/article-one',function(req,res){res.send('it is first article from RAFEEQ')});
 app.get('/article-two',function(req,res){res.send('it is the article about RAFEEQ')});
-app.get('article-three',function(req,res){res.send('it is the article about RABAH')});
+app.get('/article-three',function(req,res){res.send('it is the article about RABAH')});
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
