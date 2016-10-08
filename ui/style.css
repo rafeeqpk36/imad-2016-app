@@ -18,8 +18,8 @@ body {
 }
 
 .rain{
-    height: 1000px;
-    width:1000px;
-    border-radius:100%;
+    height: 500px;
+    width:500px;
+    border-radius:25%;
 }
 
