@@ -9,12 +9,12 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 app.get('/article-one',function(req,res){res.send('it is first article from RAFEEQ')});
-app.get('/article-two',function(req,res){res.send('it is the article about RAFEEQ')});
-app.get('/article-three',function(req,res){res.send('it is the article about RABAH')});
+app.get('/article-two',function(req,res){res.send('it is the article about  MOHD RABAH')});
+app.get('/article-three',function(req,res){res.send('it is the article about MOHD RASHID')});
+app.get('/article-four',function(req,res){res.send('it is the article about FATHIMA RIDHA')});
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
-
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
