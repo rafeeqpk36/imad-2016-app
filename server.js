@@ -5,7 +5,7 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articles={'article-One':{title:"article-one Rafeeq",
+var articles={'article-one':{title:"article-one Rafeeq",
                 heading:"Atricle One",
                 date:"9th Oct 2016",
                 content:`<p>
@@ -18,12 +18,12 @@ var articles={'article-One':{title:"article-one Rafeeq",
              This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first art
          icle.This is the content of my first article.This is the content of my first article.This is the content of my first article.
          </p>`},
-         'article-Two':{title:"article-Two Rabah",
+         'article-two':{title:"article-Two Rabah",
                 heading:"Atricle Two",
                 date:"10th Oct 2016",
                 content:`<p>
              This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article
-         </p>`,}, 'article-Three':{title:"article-Three Rashid",
+         </p>`,}, 'article-three':{title:"article-Three Rashid",
                 heading:"Atricle Three",
                 date:"11th Oct 2016",
                 content:`<p>This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article </p>`}}; 
