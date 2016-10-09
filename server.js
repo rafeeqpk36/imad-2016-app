@@ -33,7 +33,7 @@ var articleOne={title:"article-one/Rafeeq",
                 function createTemplate(data){var title=data.title;
                                               var heading=data.heading;
                                               var date=data.date;
-                                              var content=data.content;
+                                              var content=data.content;};
                                               var htmlTemplate:`<!doctype html>
 <html>
  <head>
@@ -59,7 +59,7 @@ var articleOne={title:"article-one/Rafeeq",
          </div>
  </body>
 </html>`;
-return htmlTemplate
+return htmlTemplate;
 };
 
 app.get('/', function (req, res) {
