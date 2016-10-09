@@ -6,7 +6,7 @@ var app = express();
 app.use(morgan('combined'));
 
 var articles={'article-one':{title:"article-one Rafeeq",
-                heading:"Atricle One",
+                heading:"Article One",
                 date:"9th Oct 2016",
                 content:`<p>
              This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.
@@ -19,12 +19,12 @@ var articles={'article-one':{title:"article-one Rafeeq",
          icle.This is the content of my first article.This is the content of my first article.This is the content of my first article.
          </p>`},
          'article-two':{title:"article-Two Rabah",
-                heading:"Atricle Two",
+                heading:"Article Two",
                 date:"10th Oct 2016",
                 content:`<p>
              This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article
          </p>`,}, 'article-three':{title:"article-Three Rashid",
-                heading:"Atricle Three",
+                heading:"Aricle Three",
                 date:"11th Oct 2016",
                 content:`<p>This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article </p>`}}; 
                 function createTemplate(data){var title=data.title;
