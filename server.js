@@ -29,12 +29,12 @@ var articleOne={title:"article-one/Rafeeq",
         var articleThree={title:"article-Three/Rashid",
                 heading:"Atricle Three",
                 date:"11th Oct 2016",
-                content:`<p>This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article </p>`}; 
+                content:`<p>This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article </p>`} 
                 function createTemplate(data){var title=data.title;
                                               var heading=data.heading;
                                               var date=data.date;
-                                              var content=data.content;};
-                                              var htmlTemplate:`<!doctype html>
+                                              var content=data.content;
+                                              var htmlTemplate=`<!doctype html>
 <html>
  <head>
      <title>${title}</title>
@@ -59,8 +59,7 @@ var articleOne={title:"article-one/Rafeeq",
          </div>
  </body>
 </html>`;
-return htmlTemplate;
-};
+return htmlTemplate;}
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
