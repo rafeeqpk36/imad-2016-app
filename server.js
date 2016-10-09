@@ -24,7 +24,7 @@ var articles={'article-one':{title:"article-one Rafeeq",
                 content:`<p>
              This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article
          </p>`,}, 'article-three':{title:"article-Three Rashid",
-                heading:"Aricle Three",
+                heading:"Article Three",
                 date:"11th Oct 2016",
                 content:`<p>This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article.This is the content of my first article </p>`}}; 
                 function createTemplate(data){var title=data.title;
