@@ -7,7 +7,7 @@ button.onclick=function(){
     {var counter=request.responseText;
     var span=document.getElementById("count");
     span.innerHTML=counter.toString();}}};
-    request.open('GET',`http://rafeeqpk36.imad.hasura-app.io/counter`,true);
+    request.open('GET','http://rafeeqpk36.imad.hasura-app.io/counter',true);
     request.send(null);
 };
     
