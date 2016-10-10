@@ -8,7 +8,7 @@ button.onclick=function(){
     var span=document.getElementById("count");
     span.innerHTML=counter.toString();}}}};
     
-    request.open('GET',`https://rafeeqpk36.cloud.imad.hasura.io/counter`,true);
+    request.open('GET',`http://rafeeqpk36.imad.hasura-app.io//counter`,true);
     request.send(null);
     
     
