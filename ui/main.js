@@ -15,6 +15,6 @@ function moveRight(){marginLeft=marginLeft+10;
                      marginBottom=marginBottom+10;
                      img.style.marginBottom=marginBottom+'px';
 }
-img.onclick=function(){var interval=setInterval(moveRight,50)};
+img.onclick=function(){var interval=setInterval(moveRight,5)};
     
     
