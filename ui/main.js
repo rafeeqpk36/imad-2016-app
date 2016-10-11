@@ -9,7 +9,7 @@ button.onclick=function(){
     request.send(null);
 };
 var nameInput=document.getElementById("name");
-var name=nameInput.value;
+var nam=nameInput.value;
 var submit=document.getElementById("submit_btn");
 submit.onclick=functon(){
     var names=['name1','name2','name3'];
