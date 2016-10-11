@@ -17,6 +17,8 @@ submit.onclick=functon(){
     for(var i=0;i<names.length;i++){
         list+='<li>'names[i]'<li>'
     };};
+    var ul=document.getElementById("names");
+    ul.innerHTML=list;
     
 
 
