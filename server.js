@@ -64,6 +64,7 @@ app.get('/counter', function (req, res) {counter=counter+1;
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
   });
+  app.get('/test-db',function(req,res){  });
   var names=[];
   app.get('/submit-name',function(req,res){var name=req.query.name;names.push(name);res.send(JSON.stringify(names));});
   app.get('/:articleName',function(req,res){var articleName=req.params.articleName;res.send(createTemplate(articles[articleName]));});
