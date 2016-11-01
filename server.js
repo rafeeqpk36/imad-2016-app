@@ -55,7 +55,7 @@ var articles={'article-one':{title:"article-one",
          <h1>${heading}</h1>
      </div>
      <div>
-        ${date}
+        ${date.toDateString}
      </div>
      <div>
          ${content}
