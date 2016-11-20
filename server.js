@@ -2,6 +2,9 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool=require('pg').Pool;
+var crypto=require('crypto');
+var bodyparser=require('body-parser');
+var session=require('express-session');
 var config={user:'rafeeqpk36',
             database:'rafeeqpk36',
             host:'db.imad.hasura-app.io',
@@ -11,6 +14,10 @@ var pool=new Pool(config);
             
 var app = express();
 app.use(morgan('combined'));
+app.use(bodyparser.json());
+app.use(session({secret:'someRandomSecretValue',
+                 cookie:{maxAge:1000*60*60*24*30}
+}));
                 function createTemplate(data){var title=data.title;
                                               var heading=data.heading;
                                               var date=data.date;
