@@ -58,7 +58,7 @@ app.get('/', function (req, res) {
   app.get('/test-db',function(req,res){pool.query('SELECT *FROM test',function(err,result){if(err){res.status(500).send(err.toString());}else{res.send(JSON.stringify(result.rows))}})});
   var names=[];
   app.get('/submit-name',function(req,res){var name=req.query.name;names.push(name);res.send(JSON.stringify(names));});
-  app.get('/articles/:articleName',function(req,res){pool.query("SELECT * FROM article WHERE title=$1",[req.params.articleName],function(err,result){if(err){res.status(500).send(err.toStringify())}else{if(result.rows.length===0){res.status(400).send('Article not found')}else{var articleData=result.rows[0];res.send(createTemplate(articleData));}}});});
+  app.get('/articles/:articleName',function(req,res){pool.query("SELECT * FROM article WHERE title=$1",[req.params.articleName],function(err,result){if(err){res.status(500).send(err.toStringify())}else{if(result.rows.length===0){res.status(400).send('article not found')}else{var ArticleData=result.rows[0];res.send(createTemplate(articleData));}}});});
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
@@ -71,3 +71,11 @@ var port = 8080; // Use 8080 for local development because you might already hav
 app.listen(8080, function () {
   console.log(`RAFEEQ IMAD course  app listening on port ${port}!`);
 });
+var username=req.body.username;
+var password=req.body.password;
+Pool.query("SELECT * FROM user WHERE username=$1",[username],function(err,result){if(err){res.status(500).send(err.toStringify())}else{if(result.rows.length===0){res.status(400).send('Username or password not found')}else{var dbString=result.rows[0].password;
+                                                                             var salt=dbString.split('$')[2];
+                                                                             var hashedpassword=hash(password,salt);
+                                                            if(hashedpassword===dbString){req.session.auth={userId:result.rows[0].id};res.send('credentials verified');}else{
+                                                                res.status(400).send('username or password not found');}}
+                                                                             }});
