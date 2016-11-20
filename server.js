@@ -79,3 +79,6 @@ Pool.query("SELECT * FROM user WHERE username=$1",[username],function(err,result
                                                             if(hashedpassword===dbString){req.session.auth={userId:result.rows[0].id};res.send('credentials verified');}else{
                                                                 res.status(400).send('username or password not found');}}
                                                                              }});
+  app.get('/check-login',function(req,res){if(req.session&&req.session.auth&&req.session.auth.userId){res.send("you are logged in:"+req.session.auth.userId.toString());}else{res.send("you are not looed in");}});
+  app.get('/logout',function(req,res){delete req.session.auth;res.send('logged out');});
+                                                                             
