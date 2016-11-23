@@ -83,7 +83,7 @@ var username=req.body.username;
 var password=req.body.password;
 var salt=crypto.getRandomBytes(128).toString('hex');
 var dbString=hash(password,salt);
-Pool.query("INSERT *INTO 'user' ")
+Pool.query("INSERT *INTO 'user' (username,passowrd) VALUES($1,$2)",[username,dbString],function(err,result){if(err){res.status(500).send(err.toStringify())}else")
 Pool.query("SELECT * FROM user WHERE username=$1",[username],function(err,result){if(err){res.status(500).send(err.toStringify())}else{if(result.rows.length===0){res.status(400).send('Username or password not found')}else{var dbString=result.rows[0].password;
                                                                              var salt=dbString.split('$')[2];
                                                                              var hashedpassword=hash(password,salt);
