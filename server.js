@@ -59,8 +59,7 @@ app.get('/', function (req, res) {
       var hashed=crypto.pbkdf2Sync(input,salt,10000,512,'Sha512');
       return ["pbkdf2","10000",salt,hashed.toString('hex')].join('$');
   }
-  app.get('/hash/:input',function(req,res){var hashedString=hash(req.params.input,"some random string");
-                                               res.send(hasedString);
+  app.get('/hash/:input',function(req,res){var hashedString=hash(req.params.input,"some random string");                                   res.send(hasedString);
   });
   app.get('/test-db',function(req,res){pool.query('SELECT *FROM test',function(err,result){if(err){res.status(500).send(err.toString());}else{res.send(JSON.stringify(result.rows))}})});
   var names=[];
