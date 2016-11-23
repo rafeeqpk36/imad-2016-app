@@ -78,8 +78,12 @@ var port = 8080; // Use 8080 for local development because you might already hav
 app.listen(8080, function () {
   console.log(`RAFEEQ IMAD course  app listening on port ${port}!`);
 });
+app.post('/create-user',function(req,res){
 var username=req.body.username;
 var password=req.body.password;
+var salt=crypto.getRandomBytes(128).toString('hex');
+var dbString=hash(password,salt);
+Pool.query("INSERT *INTO 'user' ")
 Pool.query("SELECT * FROM user WHERE username=$1",[username],function(err,result){if(err){res.status(500).send(err.toStringify())}else{if(result.rows.length===0){res.status(400).send('Username or password not found')}else{var dbString=result.rows[0].password;
                                                                              var salt=dbString.split('$')[2];
                                                                              var hashedpassword=hash(password,salt);
