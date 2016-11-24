@@ -18,9 +18,9 @@ body {
 }
 
 .rafi{
-    height: 200px;
-    width:200px;
-    border-radius:25%;
+    height: 100px;
+    width:100px;
+    border-radius:100%;
 }
 h1,h2{font-size:40px;
 font-weight:bold;}
