@@ -82,14 +82,19 @@ Pool.query("SELECT *FROM 'user' WHERE username=$1",username,function(err,result)
                                                                                             var dbString=result.rows[0].password;
                                                                                             var salt=dbString.split('$')[2];
                                                                                             var hashedpassword=hash(password,salt);
-                                                                                            if(hashedpassword===dbString){res.send("credentials are valid")}else{res.status(403).send("username/password is invalid")}
+                                                                                            if(hashedpassword===dbString){
+                                                                                         req.session.auth={userId:result.rows[0].id},
+                                                                                                res.send("credentials are valid")}else{res.status(403).send("username/password is invalid")}
                                                                                         }
     
     
 }
 });
 });
-  
+  app.get('/check-login',function(req,res){if(req.session&&re.session.auth&&req.session.auth.userId){
+      res.send("You are logged in :"+req.session.auth.userId.toString());}else{res.send("you are not logged in");}
+      
+        });
   app.get('/test-db',function(req,res){pool.query('SELECT *FROM test',function(err,result){if(err){res.status(500).send(err.toString());}else{res.send(JSON.stringify(result.rows))}})});
   var names=[];
   app.get('/submit-name',function(req,res){var name=req.query.name;names.push(name);res.send(JSON.stringify(names));});
