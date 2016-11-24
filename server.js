@@ -1,7 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-var Pool=require('pg').Pool;
+var pool=require('pg').Pool;
 var crypto=require('crypto');
 var bodyparser=require('body-parser');
 var session=require('express-session');
@@ -10,7 +10,7 @@ var config={user:'rafeeqpk36',
             host:'db.imad.hasura-app.io',
             port:'5432',
             password:process.env.DB_PASSWORD};
-var pool=new Pool(config);    
+var pool=new pool(config);    
             
 var app = express();
 app.use(morgan('combined'));
@@ -69,7 +69,7 @@ var username=req.body.username;
 var password=req.body.password;
 var salt=crypto.randomBytes(128).toString('hex');
 var dbString=hash(password,salt);
-Pool.query("INSERT *INTO 'user' (username,passowrd) VALUES($1,$2)",[username,dbString],function(err,result){if(err){res.status(500).send(err.toStringify())}else{res.send("user successfully created:"+username)}
+pool.query("INSERT *INTO 'user' (username,passowrd) VALUES($1,$2)",[username,dbString],function(err,result){if(err){res.status(500).send(err.toStringify())}else{res.send("user successfully created:"+username)}
 });
 });
 
@@ -77,7 +77,7 @@ Pool.query("INSERT *INTO 'user' (username,passowrd) VALUES($1,$2)",[username,dbS
 var username=req.body.username;
 var password=req.body.password;
 
-Pool.query("SELECT *FROM 'user' WHERE username=$1",username,function(err,result){if(err){res.status(500).send(err.toStringify())}else{
+pool.query("SELECT *FROM 'user' WHERE username=$1",username,function(err,result){if(err){res.status(500).send(err.toStringify())}else{
                                                                                         if(result.row.length===0){res.status(403).send("username/password is invalid")}else{
                                                                                             var dbString=result.rows[0].password;
                                                                                             var salt=dbString.split('$')[2];
