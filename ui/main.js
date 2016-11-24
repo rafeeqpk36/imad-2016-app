@@ -7,7 +7,7 @@ function loadLoginForm () {
 	        <input type="submit" id="login_btn" value="Login" />
 	        <input type="submit" id="register_btn" value="Register" />
 	        `;
-	    document.getElementById('login_area').innerHTML = loginHtml;
+	    document.getElementById('login').innerHTML = loginHtml;
 	    
 	    // Submit username & password to login
 	    var login = document.getElementById('login_btn');
@@ -80,7 +80,7 @@ function loadLoginForm () {
 	}
 	
 	function loadLoggedInUser (username) {
-	    var loginArea = document.getElementById('login_area');
+	    var loginArea = document.getElementById('login');
 	    loginArea.innerHTML = `
 	        <h3> Hi <i>${username}</i></h3>
 	        <a href="/logout">Logout</a>
