@@ -95,6 +95,7 @@ Pool.query("SELECT *FROM 'user' WHERE username=$1",username,function(err,result)
       res.send("You are logged in :"+req.session.auth.userId.toString());}else{res.send("you are not logged in");}
       
         });
+ app.get('/logout',function(req,res){delete req.session.auth;res.send('logged out');});
   app.get('/test-db',function(req,res){pool.query('SELECT *FROM test',function(err,result){if(err){res.status(500).send(err.toString());}else{res.send(JSON.stringify(result.rows))}})});
   var names=[];
   app.get('/submit-name',function(req,res){var name=req.query.name;names.push(name);res.send(JSON.stringify(names));});
@@ -112,11 +113,5 @@ app.listen(8080, function () {
   console.log(`RAFEEQ IMAD course  app listening on port ${port}!`);
 });
 
-Pool.query("SELECT * FROM user WHERE username=$1",[username],function(err,result){if(err){res.status(500).send(err.toStringify())}else{if(result.rows.length===0){res.status(400).send('Username or password not found')}else{var dbString=result.rows[0].password;
-                                                                             var salt=dbString.split('$')[2];
-                                                                             var hashedpassword=hash(password,salt);
-                                                            if(hashedpassword===dbString){req.session.auth={userId:result.rows[0].id};res.send('credentials verified');}else{
-                                                                res.status(400).send('username or password not found');}}
-                                                                             }});
-  app.get('/check-login',function(req,res){if(req.session&&req.session.auth&&req.session.auth.userId){res.send("you are logged in:"+req.session.auth.userId.toString());}else{res.send("you are not looed in");}});
-  app.get('/logout',function(req,res){delete req.session.auth;res.send('logged out');});
+
+  
