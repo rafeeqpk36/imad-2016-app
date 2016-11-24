@@ -77,7 +77,7 @@ pool.query("INSERT *INTO 'user' (username,passowrd) VALUES($1,$2)",[username,dbS
 var username=req.body.username;
 var password=req.body.password;
 
-pool.query("SELECT *FROM 'user' WHERE username=$1",username,function(err,result){if(err){res.status(500).send(err.toStringify())}else{
+pool.query("SELECT *FROM 'user' WHERE username=$1",[username],function(err,result){if(err){res.status(500).send(err.toStringify())}else{
                                                                                         if(result.row.length===0){res.status(403).send("username/password is invalid")}else{
                                                                                             var dbString=result.rows[0].password;
                                                                                             var salt=dbString.split('$')[2];
