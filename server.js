@@ -59,8 +59,19 @@ app.get('/', function (req, res) {
       var hashed=crypto.pbkdf2Sync(input,salt,10000,512,'Sha512');
       return ["pbkdf2","10000",salt,hashed.toString('hex')].join('$');
   }
-  app.get('/hash/:input',function(req,res){var hashedString=hash(req.params.input,"some random string");                                   res.send(hasedString);
+  app.get('/hash/:input',function(req,res){var hashedString=hash(req.params.input,"some random string");                                   
+  
+  res.send(hasedString);
   });
+  
+  app.post('/create-user',function(req,res){
+var username=req.body.username;
+var password=req.body.password;
+var salt=crypto.getRandomBytes(128).toString('hex');
+var dbString=hash(password,salt);
+Pool.query("INSERT *INTO 'user' (username,passowrd) VALUES($1,$2)",[username,dbString],function(err,result){if(err){res.status(500).send(err.toStringify())}else{res.send("user successfully created:"+username)}
+});
+});
   app.get('/test-db',function(req,res){pool.query('SELECT *FROM test',function(err,result){if(err){res.status(500).send(err.toString());}else{res.send(JSON.stringify(result.rows))}})});
   var names=[];
   app.get('/submit-name',function(req,res){var name=req.query.name;names.push(name);res.send(JSON.stringify(names));});
@@ -77,12 +88,7 @@ var port = 8080; // Use 8080 for local development because you might already hav
 app.listen(8080, function () {
   console.log(`RAFEEQ IMAD course  app listening on port ${port}!`);
 });
-app.post('/create-user',function(req,res){
-var username=req.body.username;
-var password=req.body.password;
-var salt=crypto.getRandomBytes(128).toString('hex');
-var dbString=hash(password,salt);
-Pool.query("INSERT *INTO 'user' (username,passowrd) VALUES($1,$2)",[username,dbString],function(err,result){if(err){res.status(500).send(err.toStringify())}else")
+
 Pool.query("SELECT * FROM user WHERE username=$1",[username],function(err,result){if(err){res.status(500).send(err.toStringify())}else{if(result.rows.length===0){res.status(400).send('Username or password not found')}else{var dbString=result.rows[0].password;
                                                                              var salt=dbString.split('$')[2];
                                                                              var hashedpassword=hash(password,salt);
