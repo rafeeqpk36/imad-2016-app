@@ -22,9 +22,8 @@ body {
     width:200px;
     border-radius:25%;
 }
-h1{font-size:40px;
+h1,h2{font-size:40px;
 font-weight:bold;}
-p{font-size:18px;}
 .container {
     max-width: 800px;
     margin: auto;
