@@ -71,7 +71,7 @@ app.get('/', function (req, res) {
 
 
 function hash (input, salt) {
-    // How do we create a hash?
+    // create a hash?
     var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
     return ["pbkdf2", "10000", salt, hashed.toString('hex')].join('$');
 }
@@ -84,8 +84,6 @@ app.get('/hash/:input', function(req, res) {
 
 app.post('/create-user', function (req, res) {
    // username, password
-   // {"username": "tanmai", "password": "password"}
-   // JSON
    var username = req.body.username;
    var password = req.body.password;
    var salt = crypto.randomBytes(128).toString('hex');
@@ -116,7 +114,7 @@ app.post('/login', function (req, res) {
               var hashedPassword = hash(password, salt); // Creating a hash based on the password submitted and the original salt
               if (hashedPassword === dbString) {
                 
-                // Set the session
+                // Set session
                 req.session.auth = {userId: result.rows[0].id};
                 // set cookie with a session id
                 // internally, on the server side, it maps the session id to an object
@@ -149,7 +147,7 @@ app.get('/check-login', function (req, res) {
 
 app.get('/logout', function (req, res) {
    delete req.session.auth;
-   res.send('<html><body>Logged out!<br/><br/><a href="/">Back to home</a></body></html>');
+   res.send('<html><body>Logged out<br/><a href="/">Back to Home</a></body></html>');
 });
 
 var pool = new Pool(config);
@@ -232,5 +230,5 @@ app.get('/ui/:fileName', function (req, res) {
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
-  console.log(`IMAD course app listening on port ${port}!`);
+  console.log(`Rafeeq's app listening on port ${port}`);
 });
