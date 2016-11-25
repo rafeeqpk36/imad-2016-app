@@ -17,8 +17,7 @@ app.use(morgan('combined'));
 app.use(bodyparser.json());
 app.use(session({secret:'someRandomSecretValue',
                  cookie:{maxAge:10000*60*60*24*30},
-                 resave: true,
-                 saveUninitialized: true
+                 
 }));
                 function createTemplate (data) {
     var title = data.title;
