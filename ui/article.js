@@ -83,7 +83,7 @@ var currentArticleTitle = window.location.pathname.split('/')[2];
 	                }
 	                comments.innerHTML = content;
 	            } else {
-	                comments.innerHTML('Oops! Could not load comments!');
+	                alert('Oops! Could not load comments!');
 	            }
 	        }
 	    };
