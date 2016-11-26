@@ -38,6 +38,10 @@ function loadLoginForm () {
 	        // Make the request
 	        var username = document.getElementById('username').value;
 	        var password = document.getElementById('password').value;
+	        if (username.trim() === '' || password.trim() === '') {
+        alert("Username/Password field can't be left empty");
+        return;
+    }
 	        console.log(username);
 	        console.log(password);
 	        request.open('POST', '/login', true);
@@ -69,6 +73,10 @@ function loadLoginForm () {
 	        // Make the request
 	        var username = document.getElementById('username').value;
 	        var password = document.getElementById('password').value;
+	         if (username.trim() === '' || password.trim() === '') {
+        alert("Username/Password field can't be left empty");
+        return;
+    }
 	        console.log(username);
 	        console.log(password);
 	        request.open('POST', '/create-user', true);
