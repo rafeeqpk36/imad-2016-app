@@ -122,7 +122,7 @@ function loadLoginForm () {
 	                articles.innerHTML = content;
 	            } else {
 	                articles.innerHTML='Oops! Could not load all articles!';
-	                
+	                innerHTML = not (); 
 	            }
 	        }
 	    };
