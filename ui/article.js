@@ -23,7 +23,7 @@ var currentArticleTitle = window.location.pathname.split('/')[2];
 	                    // clear the form & reload all the comments
 	                    document.getElementById('comment_text').value = '';
 	                    loadComments();    
-	                } else {
+	                } else {console.log(request.responseText);
 	                    alert('Error! Could not submit comment');
 	                }
 	                submit.value = 'Submit';
